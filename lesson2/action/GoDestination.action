@@ -1,0 +1,11 @@
+# Define the goal
+uint8 x
+uint8 y 
+---
+# Define the result
+uint32 total_distance_finshed
+---
+# Define a feedback message
+uint8 x
+uint8 y
+float32 percent_complete

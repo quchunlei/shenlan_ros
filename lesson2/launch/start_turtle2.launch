@@ -1,0 +1,12 @@
+ <launch>
+    <!-- 海龟仿真器 -->
+    <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+
+    <!-- 打印turtle2的位置 -->
+    <node pkg="lesson2" type="turtle_pose"
+          name="turtle2_pose" output="screen" />
+    <!-- 监听tf广播，并且控制turtle2移动 -->
+    <node pkg="lesson2" type="turtle_controller"
+          name="listener"/>
+
+ </launch>

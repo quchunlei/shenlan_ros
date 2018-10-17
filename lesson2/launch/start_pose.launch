@@ -1,0 +1,5 @@
+<launch>
+    <!-- start client -->
+    <node pkg="lesson2" type="pose_broadcaster" name="broadcaster" output="screen" />
+
+ </launch>

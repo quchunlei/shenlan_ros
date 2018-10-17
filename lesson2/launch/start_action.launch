@@ -1,0 +1,8 @@
+<launch>
+    <!-- start client -->
+    <node pkg="lesson2" type="GoDestination_client" name="action_client" output="screen" launch-prefix="gnome-terminal -e" />
+
+    <!-- start server -->
+    <node pkg="lesson2" type="GoDestination_server" name="action_server" output="screen"/>
+
+ </launch>

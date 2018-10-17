@@ -1,0 +1,8 @@
+<launch>
+    <!-- start client -->
+    <node pkg="lesson2" type="tf_broadcaster" name="broadcaster" output="screen" />
+
+    <!-- start server -->
+    <node pkg="lesson2" type="tf_listener" name="listener" output="screen" launch-prefix="gnome-terminal -e" />
+
+ </launch>
