@@ -1,0 +1,531 @@
+<robot
+  name="myarm">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="3.511E-17 0.024867 -2.0937E-16"
+        rpy="0 0 0" />
+      <mass
+        value="444.11" />
+      <inertia
+        ixx="337.5"
+        ixy="3.394E-16"
+        ixz="-3.6082E-14"
+        iyy="674.82"
+        iyz="1.2335E-17"
+        izz="337.5" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="Red">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="3.491E-07 -0.0028335 -0.01492"
+        rpy="0 0 0" />
+      <mass
+        value="57.966" />
+      <inertia
+        ixx="2.5483"
+        ixy="-9.0628E-07"
+        ixz="1.5304E-06"
+        iyy="2.5639"
+        iyz="-0.04354"
+        izz="1.0444" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="Green">
+        <color
+          rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.25"
+      rpy="3.1416 6.123E-17 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2.96"
+      upper="2.96"
+      effort="300"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0.004065 0.50746 -3.8173E-08"
+        rpy="0 0 0" />
+      <mass
+        value="57.425" />
+      <inertia
+        ixx="6.4378"
+        ixy="0.19841"
+        ixz="-9.9298E-07"
+        iyy="0.53245"
+        iyz="2.3202E-06"
+        izz="6.4921" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="Blue">
+        <color
+          rgba="0 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="0.040377 0.29 -0.18851"
+      rpy="-1.9864 0 -1.5708" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-2.35"
+      upper="2.35"
+      effort="300"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="0.0062688 0.45093 -4.6336E-09"
+        rpy="0 0 0" />
+      <mass
+        value="38.36" />
+      <inertia
+        ixx="3.5596"
+        ixy="0.1423"
+        ixz="-1.1353E-06"
+        iyy="0.27636"
+        iyz="2.906E-07"
+        izz="3.6045" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="Green">
+        <color
+          rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="revolute">
+    <origin
+      xyz="0.27 0.9843 0.09876"
+      rpy="-1.7284 0 3.1416" />
+    <parent
+      link="link2" />
+    <child
+      link="link3" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-2.62"
+      upper="2.62"
+      effort="300"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="8.6704E-09 -0.13203 -0.020954"
+        rpy="0 0 0" />
+      <mass
+        value="10.038" />
+      <inertia
+        ixx="0.10563"
+        ixy="-1.3415E-07"
+        ixz="-4.5282E-08"
+        iyy="0.071748"
+        iyz="0.0067371"
+        izz="0.082807" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="Blue">
+        <color
+          rgba="0 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="0.23 0.92551 0.096691"
+      rpy="1.5708 0.25798 1.5708" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-2.62"
+      upper="2.62"
+      effort="300"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="1.1124E-08 0.10421 0.041487"
+        rpy="0 0 0" />
+      <mass
+        value="9.417" />
+      <inertia
+        ixx="0.087332"
+        ixy="2.1223E-08"
+        ixz="-5.3766E-09"
+        iyy="0.08101"
+        iyz="0.001687"
+        izz="0.055716" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="Green">
+        <color
+          rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="revolute">
+    <origin
+      xyz="-0.1 -0.45 0"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="link4" />
+    <child
+      link="link5" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.62"
+      upper="2.62"
+      effort="300"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+  <link
+    name="link6">
+    <inertial>
+      <origin
+        xyz="0 0.076204 0"
+        rpy="0 0 0" />
+      <mass
+        value="3.6844" />
+      <inertia
+        ixx="0.015237"
+        ixy="2.7768E-19"
+        ixz="6.8501E-20"
+        iyy="0.016852"
+        iyz="-1.594E-18"
+        izz="0.013643" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link6.STL" />
+      </geometry>
+      <material
+        name="Blue">
+        <color
+          rgba="0 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="revolute">
+    <origin
+      xyz="0 0.19 0"
+      rpy="3.1416 0 3.1416" />
+    <parent
+      link="link5" />
+    <child
+      link="link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-6.28"
+      upper="6.28"
+      effort="300"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+  <link
+    name="gripper_finger_link1">
+    <inertial>
+      <origin
+        xyz="-0.0045948 0 -0.018054"
+        rpy="0 0 0" />
+      <mass
+        value="0.1382" />
+      <inertia
+        ixx="9.1673E-05"
+        ixy="-1.3832E-19"
+        ixz="-2.4411E-05"
+        iyy="0.00022117"
+        iyz="2.0172E-20"
+        izz="0.00025212" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/gripper_finger_link1.STL" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/gripper_finger_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger_joint1"
+    type="prismatic">
+    <origin
+      xyz="-0.09 0.15 0"
+      rpy="-1.5708 0 1.5708" />
+    <parent
+      link="link6" />
+    <child
+      link="gripper_finger_link1" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0.05"
+      effort="100"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+  <link
+    name="gripper_finger_link2">
+    <inertial>
+      <origin
+        xyz="-0.0045948 2.2204E-16 -0.018054"
+        rpy="0 0 0" />
+      <mass
+        value="0.1382" />
+      <inertia
+        ixx="9.1673E-05"
+        ixy="-7.1888E-22"
+        ixz="-2.4411E-05"
+        iyy="0.00022117"
+        iyz="4.622E-20"
+        izz="0.00025212" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/gripper_finger_link2.STL" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://marm_description/meshes/gripper_finger_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger_joint2"
+    type="prismatic">
+    <origin
+      xyz="0.09 0.15 0"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="link6" />
+    <child
+      link="gripper_finger_link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0.05"
+      effort="100"
+      velocity="1" />
+    <dynamics
+      damping="50"
+      friction="1" />
+  </joint>
+</robot>

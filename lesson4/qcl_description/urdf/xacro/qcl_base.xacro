@@ -1,0 +1,640 @@
+<?xml version="1.0" ?>
+<robot name="qcl" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+ <!-- PROPERTY LIST -->
+    <xacro:property name="M_PI" value="3.1415926"/>
+    <xacro:property name="base_length" value="0.26"/>
+    <xacro:property name="base_width" value="0.16"/>
+    <xacro:property name="base_height" value="0.005"/>
+
+    <xacro:property name="wheel_radius" value="0.03"/>
+    <xacro:property name="wheel_length" value="0.025"/>
+    <xacro:property name="wheel_joint_x" value="0.06"/>
+    <xacro:property name="wheel_joint_y" value="0.08"/>
+    <xacro:property name="wheel_joint_z" value="0.03"/>
+
+    <xacro:property name="motor_radius" value="0.01"/>
+    <xacro:property name="motor_length" value="0.05"/>
+    <xacro:property name="motor_joint_x" value="0.06"/>
+    <xacro:property name="motor_joint_y" value="0.055"/>
+    <xacro:property name="motor_joint_z" value="0.04"/>
+
+    <xacro:property name="caster_radius" value="0.025"/> 
+    <xacro:property name="caster_joint_x" value="0.06"/>
+
+    <xacro:property name="pillar_radius" value="0.0005"/>
+    <xacro:property name="pillar_length" value="0.05"/>
+    <xacro:property name="pillar_joint_x" value="0.04"/>
+    <xacro:property name="pillar_joint_y" value="0.03"/>
+    <xacro:property name="pillar_joint_z" value="0.05"/>
+
+    <!-- Defining the colors used in this robot -->
+    <material name="yellow">
+        <color rgba="1 0.4 0 1"/>
+    </material>
+    <material name="blue">
+        <color rgba="0 0 1 1"/>
+    </material>
+    <material name="white">
+        <color rgba="1 1 1 0.95"/>
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 0.95"/>
+    </material>
+    <material name="dark_gray">
+        <color rgba="0.75 0.75 0.75 1"/>
+    </material>
+    <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+   <material name="light_gray">
+        <color rgba="0.25 0.25 0.25 1"/>
+    </material>
+
+   <link name="base_footprint">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.001 0.001 0.001" />
+                </geometry>
+            </visual>
+        </link>
+
+        <joint name="base_footprint_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="0 0 0" />        
+            <parent link="base_footprint"/>
+            <child link="base_link" />
+     </joint>
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.04521 -0.00067608 0.013241"
+        rpy="0 0 0" />
+      <mass
+        value="0.71026" />
+      <inertia
+        ixx="0.0008804"
+        ixy="-4.168E-05"
+        ixz="-4.9519E-05"
+        iyy="0.0022413"
+        iyz="2.1648E-06"
+        izz="0.0029791" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="left_motor_link">
+    <inertial>
+      <origin
+        xyz="-0.0044525 -4.3264E-07 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.20548" />
+      <inertia
+        ixx="1.507E-05"
+        ixy="3.3294E-09"
+        ixz="1.3383E-21"
+        iyy="7.099E-05"
+        iyz="1.3162E-25"
+        izz="7.099E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/left_motor_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/left_motor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_motor_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.08 -0.052 -0.02"
+      rpy="-1.5708 -6.123E-17 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_motor_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_motor_link">
+    <inertial>
+      <origin
+        xyz="-0.0044525 4.3259E-07 -6.8314E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.20548" />
+      <inertia
+        ixx="1.507E-05"
+        ixy="-3.329E-09"
+        ixz="5.0684E-11"
+        iyy="7.099E-05"
+        iyz="-2.0772E-12"
+        izz="7.099E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/right_motor_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/right_motor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_motor_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.08 0.052 -0.02"
+      rpy="1.5864 -3.261E-10 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_motor_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_wheel_link">
+    <inertial>
+      <origin
+        xyz="-1.4851E-09 0.015015 2.4566E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.075908" />
+      <inertia
+        ixx="2.6258E-05"
+        ixy="-9.3219E-13"
+        ixz="-2.8752E-13"
+        iyy="4.396E-05"
+        iyz="1.6286E-13"
+        izz="2.6267E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/left_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29412 0.29412 0.29412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/left_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_link_joint"
+    type="continuous">
+    <origin
+      xyz="0.08 -0.0795 -0.02"
+      rpy="7.1976E-17 0.55346 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="right_wheel_link">
+    <inertial>
+      <origin
+        xyz="5.2978E-10 0.015015 -1.4089E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.075908" />
+      <inertia
+        ixx="2.6264E-05"
+        ixy="3.2505E-13"
+        ixz="3.9746E-09"
+        iyy="4.396E-05"
+        iyz="-8.8873E-13"
+        izz="2.626E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/right_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29412 0.29412 0.29412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/right_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_link_joint"
+    type="continuous">
+    <origin
+      xyz="0.08 0.0795 -0.02"
+      rpy="-6.228E-17 0.18385 -1.1386E-17" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="upper_pillar_link">
+    <inertial>
+      <origin
+        xyz="-0.0036279 0.021701 -0.05825"
+        rpy="0 0 0" />
+      <mass
+        value="0.043866" />
+      <inertia
+        ixx="8.162E-05"
+        ixy="-2.2701E-21"
+        ixz="-4.5145E-06"
+        iyy="0.00014979"
+        iyz="6.5106E-21"
+        izz="8.2197E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/upper_pillar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51373 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/upper_pillar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upper_pillar_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.05 -0.04 0.003"
+      rpy="1.5708 4.1893E-17 0.75349" />
+    <parent
+      link="base_link" />
+    <child
+      link="upper_pillar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="second_base_link">
+    <inertial>
+      <origin
+        xyz="0.0068684 0.0015 1.2737E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.12289" />
+      <inertia
+        ixx="0.00024204"
+        ixy="2.3431E-22"
+        ixz="-2.2464E-20"
+        iyy="0.00085621"
+        iyz="-9.8075E-24"
+        izz="0.00061435" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/second_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/second_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="second_base_link_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0090977 0.04 -0.063382"
+      rpy="0 -0.75349 0" />
+    <parent
+      link="upper_pillar_link" />
+    <child
+      link="second_base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="down_pillar_link">
+    <inertial>
+      <origin
+        xyz="-0.019597 -0.011183 -0.00043751"
+        rpy="0 0 0" />
+      <mass
+        value="0.018034" />
+      <inertia
+        ixx="4.0649E-06"
+        ixy="1.5272E-22"
+        ixz="8.2969E-07"
+        iyy="7.0324E-06"
+        iyz="-5.4456E-22"
+        izz="4.5743E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/down_pillar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51373 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/down_pillar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="down_pillar_link_joint"
+    type="fixed">
+    <origin
+      xyz="-0.08 0.0155 0"
+      rpy="1.5708 4.9241E-17 0.93431" />
+    <parent
+      link="base_link" />
+    <child
+      link="down_pillar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="front_wheel_base_link">
+    <inertial>
+      <origin
+        xyz="-4.7525E-18 0.00087738 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0018063" />
+      <inertia
+        ixx="1.6484E-07"
+        ixy="-1.1488E-23"
+        ixz="-9.6935E-24"
+        iyy="3.9976E-07"
+        iyz="2.0239E-24"
+        izz="2.3607E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/front_wheel_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/front_wheel_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_wheel_base_link_joint"
+    type="fixed">
+    <origin
+      xyz="-0.019597 -0.022 -0.00043751"
+      rpy="0 0.63649 0" />
+    <parent
+      link="down_pillar_link" />
+    <child
+      link="front_wheel_base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="front_wheel_link">
+    <inertial>
+      <origin
+        xyz="0.004231 -0.0034555 2.7811E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0014826" />
+      <inertia
+        ixx="1.093E-07"
+        ixy="2.5801E-08"
+        ixz="-1.269E-13"
+        iyy="1.713E-07"
+        iyz="-1.3046E-13"
+        izz="1.1404E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_wheel_link_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="3.1416 1.4691 3.1416" />
+    <parent
+      link="front_wheel_base_link" />
+    <child
+      link="front_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="front_wheel">
+    <inertial>
+      <origin
+        xyz="-0.00029981 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0030592" />
+      <inertia
+        ixx="2.5606E-07"
+        ixy="2.2334E-22"
+        ixz="1.8301E-23"
+        iyy="1.7174E-07"
+        iyz="-4.1747E-24"
+        izz="1.7174E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/front_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qcl_description/meshes/front_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.017 -0.01801 0"
+      rpy="-1.6378 1.5708 0.0099499" />
+    <parent
+      link="front_wheel_link" />
+    <child
+      link="front_wheel" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>

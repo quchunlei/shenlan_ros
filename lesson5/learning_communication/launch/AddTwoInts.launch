@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="learning_communication" name="add_two_ints_sever" type="server"/>
+  <node pkg="learning_communication" name="add_two_ints_client" type="client" args="$(arg a) $(arg b)" output="screen"/>
+</launch>

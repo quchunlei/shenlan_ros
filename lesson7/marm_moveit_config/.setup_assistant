@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: marm_description
+    relative_path: urdf/arm.urdf.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/arm.srdf
+  CONFIG:
+    author_name: Qu Chunlei
+    author_email: quchunlei@hust.edu.cn
+    generated_timestamp: 1527478955

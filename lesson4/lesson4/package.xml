@@ -1,0 +1,17 @@
+<package>
+  <name>lesson4</name>
+  <version>0.1.0</version>
+  <description>ROS By Example Volume 1</description>
+  <maintainer email="quchunlei14@gmail.com">quchunlei</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>qcl_description</run_depend>
+  <run_depend>qcl_gazebo</run_depend>
+  <run_depend>qcl_teleop</run_depend>
+  <export>
+    <metapackage/>
+  </export>
+</package>
